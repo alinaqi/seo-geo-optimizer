@@ -1,9 +1,11 @@
 """Build a themed prompt set and sample AI engines to measure mentions and citations.
 Usage: python scripts/prompt_sampler.py --category "X" --brand "Y" --domain y.com --competitors A B --runs 3 --out baseline.json"""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python scripts/x.py`
 import argparse
 import json
 import os
-import sys
 from collections import defaultdict
 from scripts import providers
 

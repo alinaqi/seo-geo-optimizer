@@ -1,8 +1,10 @@
 """Combine audit outputs into a prioritised plan and markdown report.
 Usage: python scripts/report.py --audit audit.json --lint lint.json --schema schema.json [--baseline baseline.json] --out report.md"""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python scripts/x.py`
 import argparse
 import json
-import sys
 
 # win probability, impact, effort, risk from the playbook (references/strategies.md)
 STRATEGY = {"ST01": ("AI-crawler access and server-rendered HTML", 0.90, 3, 1, 1),

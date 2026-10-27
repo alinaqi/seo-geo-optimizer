@@ -1,8 +1,10 @@
 """Access audit: robots.txt per bot, HTTP status by user agent, server-rendered text check.
 Usage: python scripts/crawl_audit.py https://example.com --paths / /pricing --out audit.json"""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python scripts/x.py`
 import argparse
 import json
-import sys
 from urllib.parse import urljoin
 import requests
 from scripts.htmlutil import visible_text, word_count, soup

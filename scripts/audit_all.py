@@ -1,9 +1,10 @@
 """One-shot audit: access matrix, page lint, schema parity and report for a URL.
 Usage: python scripts/audit_all.py https://site --paths / /pricing --outdir audit/"""
-import argparse
-import json
 import sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python scripts/x.py`
+import argparse
+import json
 from urllib.parse import urljoin
 from scripts import crawl_audit as ca, page_lint as pl, schema_check as sc, report as rp
 

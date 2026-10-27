@@ -1,6 +1,8 @@
 """JSON-LD vs visible text parity and risky-type warnings. Usage: python scripts/schema_check.py page.html"""
-import json
 import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python scripts/x.py`
+import json
 from scripts.htmlutil import jsonld_blocks, visible_text
 
 PARITY_KEYS = ("name", "headline", "price", "datePublished", "dateModified", "author.name", "offers.price")

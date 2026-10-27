@@ -1,8 +1,10 @@
 """Page lint: answer-first structure, vague openers, E-E-A-T fields, claim extraction.
 Usage: python scripts/page_lint.py page.html  (or a URL)"""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python scripts/x.py`
 import json
 import re
-import sys
 from scripts.htmlutil import soup, visible_text, word_count, jsonld_blocks
 
 VAGUE = re.compile(r"^(it|this|they|these|those|in this (article|post|guide)|welcome|today)\b", re.I)
