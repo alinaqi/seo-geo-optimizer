@@ -48,7 +48,7 @@ PROMPT_SET = [
  ("Compliance","Respect API terms (Gemini grounding ToS limits competitive tracking); never scrape consumer apps; store raw answers for audit."),
 ]
 EXEC_SUMMARY = [
- ("1","No Google core update ran Aug-Oct 2026; two spam updates (Aug 18-21, Sep 24-Oct 8) enforced existing scaled-content, site-reputation and expired-domain policies. Unedited AI/programmatic sites lost 40-95%; human-edited AI content at moderate velocity gained 30-80%.","S05,S06,S43,S62"),
+ ("1","No Google core update has run since May 2026 (as of 27 Oct 2026); two spam updates (Aug 18-21, Sep 24-Oct 8) enforced existing scaled-content, site-reputation and expired-domain policies. Unedited AI/programmatic sites lost 40-95%; human-edited AI content at moderate velocity gained 30-80%.","S05,S06,S43,S62"),
  ("2","Google's Oct 1 2026 guidance makes manual fact-checking of all AI output, including metadata, the explicit expectation, and calls fabricated authors deceptive. Treat human review as a HARD_BLOCK gate in every agent workflow.","S01,S63"),
  ("3","The strongest correlates of AI visibility are third-party brand mentions (r=0.66), YouTube mentions (r=0.74), original statistics and cited sources (+30-40% in the only peer-reviewed study), freshness (cited pages 26% fresher) and answer-first passage structure (44% of citations from first 30% of page).","S09,S13,S16,S12"),
  ("4","Debunked levers: llms.txt (Google does not use it; no correlation), schema markup for citations (no effect in 1,885-page study), AI-specific rewrites, self-ranked listicles.","S04,S08,S10,S11,S30"),

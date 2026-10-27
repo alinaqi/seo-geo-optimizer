@@ -1,6 +1,6 @@
 ---
 name: seo-geo-optimizer
-description: Audit and optimize any website or web app for SEO plus GEO/AEO (being cited by ChatGPT, Perplexity, Google AI Overviews and AI Mode, Claude, Copilot) using the Aug-Oct 2026 evidence-graded playbook. Use this whenever someone asks to improve rankings, AI search visibility, AI citations, "answer engine" or "generative engine" optimization, LLM visibility, share of voice in AI answers, getting recommended by ChatGPT, or wants an SEO/GEO audit, plan, or fixes for a site, repo, docs portal or store, even if they only say "why doesn't ChatGPT mention us" or "make our site AI-ready".
+description: Audit and optimize any website or web app for SEO plus GEO/AEO (being cited by ChatGPT, Perplexity, Google AI Overviews and AI Mode, Claude, Copilot) using an evidence-graded playbook of what works from August 2026 onward. Use this whenever someone asks to improve rankings, AI search visibility, AI citations, "answer engine" or "generative engine" optimization, LLM visibility, share of voice in AI answers, getting recommended by ChatGPT, or wants an SEO/GEO audit, plan, or fixes for a site, repo, docs portal or store, even if they only say "why doesn't ChatGPT mention us" or "make our site AI-ready".
 ---
 
 # SEO + GEO optimizer
@@ -23,7 +23,7 @@ Scripts read API keys from environment variables only (`PERPLEXITY_API_KEY`, `OP
 
 ### 0. Intake (one short exchange, or infer from context)
 
-Establish: the URL and/or repo path; site type (SaaS, ecommerce, publisher, docs, local service); target engines; whether the content is YMYL (health, finance, legal, safety); the mode: **audit** (report only), **propose** (report plus change queue or PR diffs), or **apply** (edit the repo on a branch, still never publish). Default to propose when a repo is present and audit when only a URL is given. If the user has a competitor set and category, note them for the baseline.
+Establish: the target, which may be a URL, a local repo path, or a GitHub repo URL (clone it first with `git clone --depth 1 <url> target/` and treat it as a local repo); site type (SaaS, ecommerce, publisher, docs, local service); target engines; whether the content is YMYL (health, finance, legal, safety); the mode: **audit** (report only), **propose** (report plus change queue or PR diffs), or **apply** (edit the repo on a branch, still never publish). Default to propose when a repo is present and audit when only a URL is given. If the user has a competitor set and category, note them for the baseline.
 
 ### 1. Access audit (do this first, always)
 
@@ -85,6 +85,10 @@ Write `report.md` (the script's version, extended) using this structure:
 ## Anti-patterns avoided (what was deliberately not done and why)
 ```
 
+### 7. Monitor on a schedule
+
+When the user wants ongoing review, create `seo-geo.config.json` in their project from `seo-geo.config.example.json` and run `scripts/monitor.py --config seo-geo.config.json --state .seo-geo`. It snapshots each run and diffs it against the previous one (newly blocked search bots, status changes, client-rendered shells, theme-level visibility drops). In Claude Code the same flow is the `/monitor` command in `commands/monitor.md`; `/loop 1w /monitor` makes it recurring. The monitor is read-only; any fix goes back through steps 4 and 5.
+
 ## Things this skill refuses to claim
 
 From `references/validation.md` anti-patterns: llms.txt does not influence Google or measurably any engine; schema markup does not earn AI citations (it does earn rich results and feeds shopping agents); AI-specific rewrites and micro-chunking are not required; self-ranked listicles hurt; AI detectors are not a quality gate. If the user asks for these, explain the evidence in one or two sentences and offer the lever that does work.
@@ -93,7 +97,9 @@ From `references/validation.md` anti-patterns: llms.txt does not influence Googl
 
 - `references/strategies.md`: all 24 strategies with mechanism, evidence, agent workflow, checks, gates.
 - `references/validation.md`: 30 checks, penalty safeguards, anti-patterns.
-- `references/measurement.md`: prompt-set design, KPIs, Aug-Oct 2026 timeline.
+- `references/measurement.md`: prompt-set design, KPIs, timeline from August 2026.
 - `references/tools.md`: SEO and AI-visibility tools, APIs, MCP servers, pricing.
 - `references/sources.md`: 75 graded sources.
 - `playbook/`: data modules and `build_xlsx.py` that regenerate the full workbook.
+- `AGENTS.md`: the same guideline for any coding agent (Codex reads it automatically).
+- `commands/monitor.md`: the `/monitor` slash command.

@@ -10,7 +10,7 @@ from data_validation import CHECKS, PENALTIES, ANTIPATTERNS, SCENARIOS
 from data_tools import SEO_TOOLS, AEO_TOOLS
 from data_misc import TIMELINE, KPIS, PROMPT_SET, EXEC_SUMMARY, README
 
-SUB = "SEO + AEO Agentic Playbook, practice from Aug 2026 to 27 Oct 2026. Evidence grades A-D; see README."
+SUB = "SEO + AEO Agentic Playbook, practice from August 2026 onward (research cut-off 27 Oct 2026). Evidence grades A-D; see README."
 
 
 def simple_sheet(wb, name, cols, rows, sizes, subtitle=SUB):
@@ -26,7 +26,7 @@ def simple_sheet(wb, name, cols, rows, sizes, subtitle=SUB):
 def readme_sheet(wb):
     ws = wb.active
     ws.title = "README"
-    r = X.title(ws, "SEO + AEO Agentic Playbook (Aug-Oct 2026)", "Prepared 2026-10-27. Legend: blue text = editable estimate inputs; black = formulas or research text.")
+    r = X.title(ws, "SEO + AEO Agentic Playbook (from August 2026)", "Prepared 2026-10-27. Legend: blue text = editable estimate inputs; black = formulas or research text.")
     X.header(ws, r, ["Topic", "Notes"])
     X.write_rows(ws, r + 1, README)
     X.widths(ws, [22, 140])
@@ -100,7 +100,7 @@ def tool_sheets(wb):
 def misc_sheets(wb):
     simple_sheet(wb, "Measurement KPIs", ["KPI", "Definition", "Source", "Formula", "Cadence", "Target / benchmark", "Caveat"], KPIS, [26, 50, 30, 24, 12, 40, 30])
     simple_sheet(wb, "Prompt Set Design", ["Element", "Guidance"], PROMPT_SET, [20, 140])
-    simple_sheet(wb, "Timeline Aug-Oct 2026", ["Date", "Event", "Implication", "Sources"], TIMELINE, [22, 80, 60, 14])
+    simple_sheet(wb, "Timeline from Aug 2026", ["Date", "Event", "Implication", "Sources"], TIMELINE, [22, 80, 60, 14])
     simple_sheet(wb, "Sources", ["ID", "Title / finding", "Publisher", "Date", "URL", "Grade"], SOURCES, [6, 90, 30, 18, 60, 7])
 
 

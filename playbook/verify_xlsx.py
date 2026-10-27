@@ -4,7 +4,7 @@ from openpyxl import load_workbook
 
 EXPECTED = ["README", "Executive Summary", "Strategy Playbook", "Agent Execution", "Validation Checklist",
             "Penalty Safeguards", "Anti-patterns", "Agent Test Scenarios", "SEO Tools", "AEO Tools",
-            "Measurement KPIs", "Prompt Set Design", "Timeline Aug-Oct 2026", "Sources"]
+            "Measurement KPIs", "Prompt Set Design", "Timeline from Aug 2026", "Sources"]
 
 
 def source_ids(wb):

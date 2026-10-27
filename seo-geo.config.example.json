@@ -1,0 +1,9 @@
+{
+  "url": "https://www.example.com",
+  "paths": ["/", "/pricing", "/blog/your-best-article"],
+  "brand": "Example",
+  "domain": "example.com",
+  "category": "AI visibility analytics",
+  "competitors": ["Competitor A", "Competitor B"],
+  "runs": 3
+}

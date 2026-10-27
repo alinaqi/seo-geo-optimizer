@@ -13,7 +13,7 @@
 | Competitor set | Fix 3-5 competitors per theme; compute share of voice = brand mentions / total brand mentions in set. |
 | Compliance | Respect API terms (Gemini grounding ToS limits competitive tracking); never scrape consumer apps; store raw answers for audit. |
 
-## Timeline Aug-Oct 2026
+## Timeline from Aug 2026
 
 | Date | Event | Implication | Sources |
 |---|---|---|---|

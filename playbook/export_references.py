@@ -45,7 +45,7 @@ def tools_md():
 
 def measurement_md():
     return "\n\n".join(["# Measurement and prompt-set design", _table(["Element", "Guidance"], PROMPT_SET),
-                        "## Timeline Aug-Oct 2026", _table(["Date", "Event", "Implication", "Sources"], TIMELINE)])
+                        "## Timeline from Aug 2026", _table(["Date", "Event", "Implication", "Sources"], TIMELINE)])
 
 
 def sources_md():

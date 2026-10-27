@@ -62,7 +62,7 @@
 | S58 | Google I/O 2026 / Universal Cart: agentic shopping via Universal Commerce Protocol and Agent Payments Protocol | Google (via Gemini grounded search) | 2026 | https://blog.google/products/shopping/ | C |
 | S59 | OpenAI Agentic Commerce Protocol (with Stripe) for ChatGPT shopping | OpenAI | 2025-09 / 2026 | https://developers.openai.com/commerce | A |
 | S60 | Google March 2026 core update analysis: 79.5% of top-3 URLs changed; shift from aggregators to original/official sources | Amsive | 2026-03 | https://www.amsive.com/insights/seo/google-march-2026-core-update-winners-losers-analysis/ | C |
-| S61 | Google: no core update Aug-Oct 2026; May 2026 core update (May 21-Jun 2) is the latest | Search Engine Watch | 2026-10 | https://searchenginewatch.com/could-googles-next-core-update-arrive-in-september-2026/ | B |
+| S61 | Google: no core update from August 2026 through 27 Oct 2026; May 2026 core update (May 21-Jun 2) is the latest | Search Engine Watch | 2026-10 | https://searchenginewatch.com/could-googles-next-core-update-arrive-in-september-2026/ | B |
 | S62 | August 2026 spam update (Aug 18-21, 2d16h) | Search Engine Roundtable (via Gemini grounded search) | 2026-08-21 | https://www.seroundtable.com/ | B |
 | S63 | Google Oct 2026 guidance: manual review must cover titles, meta descriptions, structured data, alt text; fabricated author profiles are deceptive | Relevant Audience / SEJ coverage | 2026-10-01 | https://www.relevantaudience.com/seo/google-ai-content-guidance-manual-fact-check/ | B |
 | S64 | GSC Performance report split: Web vs multimodal search (Lens, Circle to Search), 2026-09-24 | Google (via Gemini grounded search) | 2026-09-24 | https://support.google.com/webmasters/ | C |
