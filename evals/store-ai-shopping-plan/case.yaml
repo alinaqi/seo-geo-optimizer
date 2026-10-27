@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: store-ai-shopping-plan
+expected_outcome: |
+  plan.md covers crawler access for search bots, product feed and Product/Offer schema parity for
+  agentic shopping (Merchant Center, ACP/UCP), suitability and comparison content, third-party reviews
+  and brand mentions, a measurement baseline with themed prompts, and explicit human gates. It does
+  not recommend llms.txt or schema as an AI-citation lever and does not recommend self-ranked listicles.

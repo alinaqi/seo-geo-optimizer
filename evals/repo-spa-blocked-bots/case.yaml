@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: repo-spa-blocked-bots
+expected_outcome: |
+  Identifies that public/robots.txt blocks OAI-SearchBot and PerplexityBot (search bots) while the
+  real intent is to block training bots, and that app/page.tsx renders its content client-side
+  after fetch so AI crawlers see an empty shell. Proposes a robots.txt diff that allows search bots
+  and keeps GPTBot/ClaudeBot blocked, a server-rendering fix, visible author/date and answer-first
+  structure for the pricing page, with claim ledger and human gates. Does not merge or deploy.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,63 @@
+# Tools (verify pricing before purchase)
+
+## SEO tools
+
+| Tool | Category | Role | What it does | API / MCP | Pricing (Oct 2026) | Notes | Sources |
+|---|---|---|---|---|---|---|---|
+| Google Search Console | Free / official | Track + validate | Clicks, impressions, indexation, generative-AI performance report (June 2026), AI opt-out toggle, multimodal split (Sep 2026) | API yes; community MCP servers (no official) | Free | Authoritative for Google; AI report in beta rollout | S48,S64 |
+| Bing Webmaster Tools | Free / official | Track + validate | Search performance, AI Performance (citations, cited pages, grounding queries, citation share, intents) | API yes | Free | Only engine-native AI citation analytics | S66,S67,S68 |
+| IndexNow | Free / protocol | Improve | Instant URL change notification to Bing, Yandex, Seznam and partners | API yes | Free | Stream submissions; Bing 'strongly recommended' | S69 |
+| PageSpeed Insights / CrUX API | Free / official | Validate | Lab and field Core Web Vitals | API yes | Free | Field p75 is the ranking-relevant metric | S03 |
+| Rich Results Test / schema.org validator | Free / official | Validate | Structured data eligibility and syntax | Rich Results Test API | Free | Schema must match visible content | S04 |
+| Google Search Status Dashboard | Free / official | Track | Confirmed core and spam update rollouts | RSS | Free | Pause automated publishing during rollouts | S56 |
+| Semrush (incl. AI Visibility Toolkit) | All-in-one suite | Track + improve | Keywords, site audit, backlinks, position tracking, AI Visibility add-on, Copilot recommendations | API yes; official hosted MCP (OAuth, read-only, API units) | SEO plan $139.95/mo; AI toolkit $99/mo per domain | MCP on Starter/Pro+ with unit allowance | S39,S45 |
+| Ahrefs (incl. Brand Radar) | All-in-one suite | Track + improve | Backlinks, keywords, site audit, Brand Radar AI visibility, AI citation data in API | API yes; official remote MCP (paid plans; no custom-client use) | Lite $129/mo; Brand Radar index from $199/mo | Local MCP repo archived Feb 2026 | S40,S45 |
+| Moz Pro | All-in-one suite | Track | Keywords, links, AI Overviews by keyword, AI Visibility dashboard | Links API; MCP beta on API plans | $99-299/mo |  | S45 |
+| SE Ranking (incl. SE Visible) | All-in-one suite | Track | Rank tracking, audit, AI visibility add-on; publishes llms.txt and AI citation studies | API yes; official MCP | Core $129/mo; AI add-on ~$89/mo | Budget-friendly suite | S11 |
+| Similarweb (AEO Intelligence) | Market intelligence | Track | Traffic benchmarks, AI referral estimates, AI share of voice | API yes | AEO from $99-129/mo; enterprise custom | Industry AI referral benchmarks | S33 |
+| Screaming Frog SEO Spider v24 | Technical crawler | Validate + improve | Crawl, JS rendering comparison, log import, built-in MCP server (v24.1), LLM integrations | CLI + built-in MCP (local, paid licence) | £259/yr | Core agent crawl tool; runs locally | S41 |
+| Sitebulb | Technical crawler | Validate | Desktop/cloud crawl with prioritised hints | API (cloud) | from ~$13.50/mo |  |  |
+| Lumar / Botify / Oncrawl / JetOctopus | Enterprise crawl + logs | Validate + track | Large-scale crawl, log analysis, AI-bot traffic reports, Botify Assist agent | APIs | Custom ($1k+/mo); JetOctopus from ~$200/mo | Botify Assist adds AI visibility + annotations |  |
+| Conductor (AgentStack) | Enterprise platform | Track + improve | Content intelligence, AI search tracking, MCP server reviewed by OpenAI/Anthropic (Apr 2026) | API + MCP | Custom (~$25k-60k/yr est.) | Absorbed Searchmetrics |  |
+| BrightEdge (Prompt Monitor, DataMind) | Enterprise platform | Track | Enterprise SEO, AI prompt monitoring, engine disagreement research | API | Custom (median ~$50k-127k/yr est.) |  | S38 |
+| seoClarity | Enterprise platform | Track | Enterprise rank/AI tracking | API | Custom (~$3k/mo+) |  |  |
+| Clearscope / Surfer / MarketMuse / Frase / NeuronWriter | Content optimisation | Improve | Topic coverage scoring, briefs, AI drafting, Frase Content Guard refresh agent | Surfer, MarketMuse APIs; Frase MCP | $19-300+/mo | Use for coverage, not as information-gain proof |  |
+| AccuRanker / STAT / Nightwatch | Rank tracking | Track | Daily ranks, SERP features, Nightwatch LLM tracking and official MCP | APIs; Nightwatch MCP | Nightwatch from ~$32-39/mo; AccuRanker ~$129/mo; STAT custom |  |  |
+| Majestic / BuzzStream / Pitchbox | Links and outreach | Improve | Link index, outreach CRM | Majestic API from $399/mo | Varies | Mentions matter more than links for AEO | S09 |
+| Qwoted / Featured / Source of Sources / HARO (relaunched) | Digital PR query feeds | Improve | Journalist requests for expert commentary; HARO shut Dec 2024, relaunched by Featured Apr 2025 | Email/web | Free-paid tiers | Primary mention-earning channel | S09 |
+| BrightLocal / Whitespark / Semrush Local (GBP AI Agent) | Local SEO | Track + improve | Citations, GBP management, review replies | APIs | from ~$33-39/mo | Local intent in AI Mode |  |
+| Originality.ai / Copyleaks / GPTZero | Originality + plagiarism | Validate | Plagiarism and duplication scanning; AI-detection scores (unreliable as a gate) | APIs | ~$15-30/mo credits | Use for plagiarism QA, not AI-detection gating |  |
+| Google Analytics 4 | Analytics | Track | AI Assistant default channel (May 2026); conversions by source | API yes; official GA MCP | Free | Add custom rules for claude.ai, perplexity.ai | S47 |
+| Cloudflare AI Crawl Control | Edge / bot management | Validate + control | Per-bot allow/block, pay-per-crawl (HTTP 402), crawl-to-referral stats | API | Included in plans | Toggle 'block AI bots' blocks search bots too | S27 |
+| Claude Code + MCP servers | Agent runtime | Execute | Orchestrates Semrush/Ahrefs/GSC/Screaming Frog MCPs, writes code and content, scheduled runs | MCP client | Subscription/API usage | Primary execution environment for this playbook | S39,S40,S41 |
+
+## AEO / AI visibility tools
+
+| Tool | Category | Role | What it does | API / MCP | Pricing (Oct 2026) | Notes | Sources |
+|---|---|---|---|---|---|---|---|
+| Profound | Enterprise AI visibility | Track | ChatGPT, AI Overviews, AI Mode, Perplexity, Copilot, Gemini (~6); answer position, conversation data, API, agent features | API yes | Starter $99/mo (ChatGPT only); enterprise custom ($399-2,000+/mo) | Category leader; $1B valuation | S45 |
+| Peec AI | Mid-market / agency | Track | 6 models, 115 languages; prompt-level sources; unlimited seats | API on higher tiers | €85-95/mo Starter (50 prompts); Pro $245; Advanced $495 | 30M-source citation study publisher | S18,S45 |
+| Scrunch AI (Sitecore) | Enterprise / self-serve | Track + improve | 7 platforms; content recommendations; enterprise API | API yes | Starter $250-300/mo; Growth $417-500/mo | Acquired by Sitecore June 2026 (~$225M) | S45,S46 |
+| Otterly.ai | Entry-level | Track | 5-6 engines; AI Mode add-on $9/mo | Limited | Lite $29/mo (15 prompts); Standard $189; Premium $489 | Published llms.txt and schema experiments | S31,S45 |
+| AthenaHQ | Mid-market | Track + improve | Up to 11 models; built by ex-Google/DeepMind staff | Yes | Free Essential; Starter $295/mo |  |  |
+| Semrush AI Visibility Toolkit | Suite add-on | Track | ChatGPT, AIO, Perplexity; 25 prompts daily; share of voice | Via Semrush API/MCP | $99/mo per domain | No free trial | S45 |
+| Ahrefs Brand Radar | Suite add-on | Track | AI Visibility Index across 6 prompt indexes; brand mentions | Ahrefs API/MCP | Included from Lite $129; index from $199/mo | Backed by Ahrefs citation studies | S45 |
+| SE Ranking AI Visibility (SE Visible) | Suite add-on | Track | AIO, ChatGPT, Gemini, Perplexity | API | ~$89/mo add-on |  |  |
+| Similarweb AEO Intelligence | Market intelligence | Track | AI referral traffic estimates and share of voice | API | $99-129/mo | Benchmarks across industries | S33 |
+| Conductor / BrightEdge Prompt Monitor | Enterprise add-on | Track | Prompt monitoring inside enterprise SEO suites | APIs | Custom |  | S38 |
+| Rankscale.ai | Practitioner | Track | Before/after entity mapping; hourly-monthly refresh | Yes | €20/mo credits; Pro $99/mo |  |  |
+| Writesonic GEO | Monitoring + content | Track + improve | 8 platforms plus AI drafting | Yes | ~$249/mo |  |  |
+| Gauge | GEO tracking | Track | Multi-engine; Claude/Grok gated to enterprise | API (enterprise) | $99/mo entry; $599/mo self-serve |  |  |
+| LLM Pulse | Niche | Track | Organic mentions plus paid AI ads tracking | Yes | €49/mo Starter |  |  |
+| Promptwatch / Superlines / Goodie / Bluefish / Azoma | Emerging / enterprise | Track | Prompt-level analytics, multi-brand enterprise tracking, GEO content | Varies | Custom; Goodie ~$399/mo | Promptwatch reported Aug 2026 Reddit drop | S36 |
+| Evertune | Competitive benchmarking | Track | Separates 'memory' (training) vs 'search' (live) citations | Yes | Custom | Useful to choose PR vs technical fixes |  |
+| Kalicube | Entity management | Improve | Entity clarity, knowledge panels, brand narrative in AI | Consulting + platform | Custom | Jason Barnard (coined AEO) |  |
+| HubSpot AEO Grader | Free spot check | Validate | One-off brand grade in ChatGPT, Perplexity, Gemini; paid monitor $50/mo | No | Free / $50/mo |  |  |
+| Nightwatch LLM tracking | Rank tracker add-on | Track | LLM visibility inside rank tracking; official MCP | MCP | from ~$32/mo |  |  |
+| OpenAI Responses API (web_search) | Official API | Validate | Programmatic ChatGPT-style answers with sources list; external_web_access flag | API | Usage-based | Answers differ from consumer app; discretionary search | S52 |
+| Perplexity Sonar API | Official API | Validate | Web-grounded on every call; search_results with URL/title/date | API | ~$0.005/call + tokens | Most reproducible for sampling | S51 |
+| Gemini API grounding with Google Search | Official API | Validate | groundingMetadata with chunks and queries | API | Usage-based | ToS limits competitive tracking; sources often domain-level | S53 |
+| Anthropic Claude web search tool | Official API | Validate | search_results and 150-char citations | API | Usage-based | Claude searches only when needed | S54 |
+| Bing Webmaster AI Performance | Official / free | Track | Citations, cited pages, grounding queries, citation share | API | Free | Only engine-native AI citation data | S66,S68 |
+| Google Search Console generative-AI report | Official / free | Track | Impressions/clicks in AI Overviews, AI Mode, Discover AI | API (rolling out) | Free | No prompt text exposed | S48 |
+| GA4 AI Assistant channel | Official / free | Track | AI referral sessions and conversions | API | Free | Add claude.ai and perplexity.ai manually; referrer loss caveat | S47,S49 |
