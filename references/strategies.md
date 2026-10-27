@@ -178,6 +178,22 @@ Win probability = estimated chance of a measurable KPI gain in 90-180 days; prio
 
 **Gate:** Product marketing and legal approve (REVIEW_REQUIRED). **Guardrails:** No disparagement; no outdated competitor pricing; update or remove when sources change.
 
+## ST25 ICP-led content strategy (win 60%, grade C, risk 1/3)
+
+**What:** Derive ideal customer profiles (role, company size, industry, market, language, buying triggers, objections) from the site, pricing, case studies, reviews and job posts; map each segment to the prompts it types and the engines it uses; turn that into briefs with required information gain, a capped calendar and measurement rows.
+
+**Why:** 51% of B2B software buyers now start vendor research in an AI chatbot and AI chatbots are the top shortlist influence; recommendation answers are built per persona and intent, so content that names the segment and its fit gets retrieved for that segment's prompts. Generic category pages do not.
+
+**Evidence:** G2 AI Search Insight Report (C); Gartner buyer survey (C); First Page Sage suitability finding (C); Bain third-party citation share (C). Sources: S76,S77,S20,S78
+
+**Agent:** ICP and strategy agent | autonomy PROPOSE | trigger Quarterly; on new market or product
+
+**Steps:** 1 Run icp_signals.py and market_detect.py on 5-10 pages; collect evidence quotes. 2 Draft ICP sheet per segment (role, size, industry, market, language, triggers, objections, engines, prompts) with confidence and UNKNOWNs. 3 Confirm with owner. 4 Run strategy_plan.py to produce briefs, capped calendar and prompt rows. 5 Hand briefs to content agents; register prompt rows with the measurement agent.
+
+**Checks:** Every segment has >=1 evidence quote or is marked UNKNOWN; every brief states information gain and gate; calendar under velocity cap; prompt rows exist per brief.
+
+**Gate:** Head of marketing or founder confirms segments and competitor set (REVIEW_REQUIRED). **Guardrails:** No invented personas or market claims; no briefs without a named human author.
+
 ## ST20 AI visibility measurement program (win 85%, grade B, risk 1/3)
 
 **What:** Build a prompt set (>=30 prompts per vertical x 3+ engines, sampled weekly via official APIs plus consumer-app spot checks), track mention, citation, position-in-answer and sentiment; add GA4 AI Assistant channel with custom rules for claude.ai/perplexity.ai; use GSC generative-AI report and Bing AI Performance.
@@ -242,6 +258,22 @@ Win probability = estimated chance of a measurable KPI gain in 90-180 days; prio
 
 **Gate:** Content lead approves cluster plan. **Guardrails:** Briefs must specify information gain; no 'summarise top 10' briefs.
 
+## ST27 Persona prompt coverage and validation (win 65%, grade C, risk 1/3)
+
+**What:** Build the prompt set from real persona language (sales calls, support, reviews, Reddit) per segment and market; track mention, citation and sentiment per segment theme; feed gaps back into briefs; add a human-validation loop because buyers verify AI answers with peers and reps.
+
+**Why:** 69% of B2B buyers validate AI insights with human reps and 13 stakeholders touch a deal, so AI visibility must be consistent with what sales and reviews say; segment-level prompt sets reveal which personas the brand is invisible to.
+
+**Evidence:** Gartner and Forrester buyer research (C); BrightEdge engine disagreement (C); measurement design (B). Sources: S77,S38,S76
+
+**Agent:** Persona prompt agent | autonomy AUTO (sampling), PROPOSE (gap briefs) | trigger Weekly with measurement
+
+**Steps:** 1 Mine real questions per segment. 2 Add 3-5 variants per theme per segment and market. 3 Sample weekly; label by segment. 4 Report segments where the brand is absent; propose briefs. 5 Ask sales monthly which AI answers prospects quote.
+
+**Checks:** PII stripped; >=30 prompts per segment-market; variance reported.
+
+**Gate:** None for sampling; content lead for briefs. **Guardrails:** Respect API terms; never scrape consumer apps.
+
 ## ST07 Third-party review and independent listicle presence (win 60%, grade C, risk 1/3)
 
 **What:** Get listed and well-reviewed on G2, Capterra, Trustpilot, Yelp, industry directories; pitch inclusion in independent 'best X' roundups and comparison articles. Do not mass-publish self-ranked listicles on your own domain.
@@ -257,6 +289,22 @@ Win probability = estimated chance of a measurable KPI gain in 90-180 days; prio
 **Checks:** Profile facts match entity record; review requests follow platform policy; no fake or incentivised reviews.
 
 **Gate:** CS lead approves outreach and responses. **Guardrails:** No review gating, no self-ranked listicles at scale, no fake reviews (FTC rule).
+
+## ST26 Market and language localisation for AI search (win 60%, grade C, risk 1/3)
+
+**What:** Serve each target language at its own URL with the answer in the opening paragraph written by a native speaker (no literal machine translation), earn local third-party mentions and reviews (OMR Reviews, Capterra DE, Trustpilot UK, ITreview JP, Naver KR), sample the engine mix that market actually uses, and respect regional rules (EEA/DMA, UK CMA).
+
+**Why:** AI engines ignore hreflang when composing answers and run 43% of non-English sub-searches in English, so a JavaScript language toggle or a thin translated subfolder is invisible; local-language passages plus local mentions are what get retrieved. Engine mix differs by market (Naver, Baidu/DeepSeek, Yandex, Le Chat), so the measurement set must be per market.
+
+**Evidence:** Peec AI fan-out language study (C); Vizible hreflang study (D); Google AIO language availability (A); regional engine shares (C). Sources: S81,S82,S84,S85,S87
+
+**Agent:** Localisation agent | autonomy PROPOSE | trigger On market entry; quarterly
+
+**Steps:** 1 Detect current locales, language swaps and mismatches. 2 Propose per-language URL structure and opening-paragraph answers per page. 3 List local review platforms and directories to claim. 4 Build per-market prompt set in the local language and sample the market's engine mix. 5 Flag regional rules (EEA/DMA, CMA).
+
+**Checks:** Each language URL serves native text in raw HTML; html lang matches text; no machine-translated boilerplate; local prompts sampled.
+
+**Gate:** Native-speaking reviewer approves copy; infra approves URL changes. **Guardrails:** Never ship literal machine translation; never fake local presence.
 
 ## ST11 Structured data hygiene (rich results and shopping, not a citation lever) (win 55%, grade B, risk 1/3)
 

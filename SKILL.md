@@ -39,6 +39,19 @@ Interpret with `references/strategies.md` ST01. The two failures that silently z
 
 If the site sits behind Cloudflare or another WAF, say explicitly that robots.txt is not proof of access and that the edge must be tested from verified bot IPs or logs (the script tests user-agent strings only).
 
+### 1b. ICP and market discovery
+
+Before judging pages, establish who the site is for and where. Run on the same sampled pages:
+
+```bash
+python scripts/icp_signals.py audit/page.html      # roles, industries, size band, pricing model, review platforms, proof quotes with evidence
+python scripts/market_detect.py audit/page.html --url https://example.com   # languages, hreflang, JavaScript language swaps, currencies, geographies, market profile
+```
+
+Write an ICP sheet with one row per segment (role, size, industry, market, language, triggers, objections, engines to sample, prompts, competitors, confidence) using the template in `references/icp-and-markets.md`. Quote the evidence for every field and leave UNKNOWN where the site gives nothing; the owner confirms the sheet before it drives content. The market table in that file tells you which engines and third-party citation pools matter per market, because the mix differs (Naver in Korea, Baidu and DeepSeek in China, Le Chat in France, Trustpilot for UK consumers, OMR Reviews in DACH).
+
+Language matters more than it used to: engines ignore hreflang when composing answers and run many non-English sub-searches in English, so a JavaScript language toggle or thin translated subfolder is invisible. `market_detect.py` flags both patterns.
+
 ### 2. Page audit
 
 For each sampled page, read `lint.json` and `schema.json`: answer-first score per section, vague openers, visible author and dates, claims with numbers (these go into a claim ledger), schema values missing from visible text, risky schema types. For a repo, also inspect templates and the rendering strategy (SSR, SSG, CSR) and any `robots.txt`, `next.config`, middleware or CDN config that governs bots.
@@ -61,6 +74,16 @@ Engines disagree on brands about 62% of the time and API answers differ from con
 
 Typical order on a site with sound fundamentals: crawler access and SSR (ST01), measurement (ST20), content refresh (ST02), answer-first structure (ST03), E-E-A-T fields (ST10), information gain (ST04), entity consistency (ST08), brand mentions and PR (ST05), suitability pages (ST14), Bing/IndexNow (ST18). Programmatic scale (ST15) is last and only with a 5-page pilot.
 
+### 4b. Content strategy
+
+Save the confirmed ICP sheet as `icp.json` (brand, category, competitors, segments with roles, markets, languages, engines) and run:
+
+```bash
+python scripts/strategy_plan.py --icp icp.json --outdir strategy/ --weekly-cap 3 --weeks 13
+```
+
+It writes `strategy.md` (segments, velocity cap, calendar, rules) and `calendar.csv` (one brief per row: segment, theme, language, strategy ID, intent, information gain, gate, prompts). Every brief must state its information gain before writing starts; a brief that would only summarise existing results is dropped. For consumer sites add demographic fields from reviews and analytics, never guessed. The prompts column becomes rows in the measurement set so each page is checked for retrieval after it ships.
+
 ### 5. Execute within the mode
 
 - **audit**: deliver the report only.
@@ -79,7 +102,9 @@ Write `report.md` (the script's version, extended) using this structure:
 ## Access matrix (bot x path, raw-HTML words, SPA shell flag, WAF caveat)
 ## Page findings (per page: structure, E-E-A-T, schema parity, information gain, claims to verify)
 ## AI visibility baseline (theme x engine rates with n, or UNKNOWN plus the prompt set)
+## ICP and markets (segments with evidence and confidence; market table rows that apply; language findings)
 ## Prioritised plan (ID, strategy, finding, autonomy, gate, expected signal window)
+## Content strategy (link to strategy.md and calendar.csv, or the first 10 briefs inline)
 ## Changes made or proposed (diffs or queue, each with claim ledger)
 ## Human gates (what needs a person before it goes live)
 ## Anti-patterns avoided (what was deliberately not done and why)
@@ -95,7 +120,8 @@ From `references/validation.md` anti-patterns: llms.txt does not influence Googl
 
 ## Reference map
 
-- `references/strategies.md`: all 24 strategies with mechanism, evidence, agent workflow, checks, gates.
+- `references/icp-and-markets.md`: ICP sheet template, market table (engines and citation pools per market), language rules, brief template.
+- `references/strategies.md`: all 27 strategies with mechanism, evidence, agent workflow, checks, gates.
 - `references/validation.md`: 30 checks, penalty safeguards, anti-patterns.
 - `references/measurement.md`: prompt-set design, KPIs, timeline from August 2026.
 - `references/tools.md`: SEO and AI-visibility tools, APIs, MCP servers, pricing.

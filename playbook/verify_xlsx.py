@@ -33,11 +33,11 @@ def check_strategies(ws):
 def check_values(path):
     wb = load_workbook(path, data_only=True)
     ws = wb["Strategy Playbook"]
-    vals = [ws.cell(row=r, column=12).value for r in range(5, 5 + 24)]
+    vals = [ws.cell(row=r, column=12).value for r in range(5, 5 + 27)]
     assert all(isinstance(v, (int, float)) for v in vals), vals
     es = wb["Executive Summary"]
     stats = [es.cell(row=r, column=2).value for r in range(es.max_row - 4, es.max_row + 1)]
-    assert stats[0] == 24 and 0 < stats[1] < 1, stats
+    assert stats[0] == 27 and 0 < stats[1] < 1, stats
     return vals[0], stats
 
 

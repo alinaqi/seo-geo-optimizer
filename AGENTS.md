@@ -32,6 +32,15 @@ Never run the audit scripts from inside the cloned target with the target on `sy
 
 For a repository that is not deployed, reconstruct the HTML each route would emit (read the templates and the rendering mode) and run `page_lint.py` and `schema_check.py` on that HTML; run `crawl_audit.parse_robots` on `public/robots.txt`. Label those results as reconstructed, not crawled.
 
+## 3b. Discover ICP and markets
+
+```bash
+<skill-dir>/.venv/bin/python <skill-dir>/scripts/icp_signals.py audit/page.html
+<skill-dir>/.venv/bin/python <skill-dir>/scripts/market_detect.py audit/page.html --url https://www.example.com
+```
+
+Write the ICP sheet (`references/icp-and-markets.md` has the template and the per-market engine table) with evidence quotes and UNKNOWN where the site gives none. Then, once the owner confirms it, save it as `icp.json` and run `scripts/strategy_plan.py --icp icp.json --outdir strategy/` to get briefs, a capped calendar and measurement prompts.
+
 ## 4. Decide and write
 
 Read `references/strategies.md` for the strategy each finding maps to, its autonomy level (AUTO, PROPOSE, ASSIST) and its human gate. Then write the report in the structure given in `SKILL.md` step 6, and in propose or apply mode produce unified diffs that apply with `patch -p1`.

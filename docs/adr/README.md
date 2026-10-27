@@ -10,3 +10,4 @@ One file per decision, numbered, using the template in `template.md`. Status mov
 | [0004](0004-crawler-policy-and-debunked-levers.md) | Crawler policy stance and refused levers | accepted |
 | [0005](0005-measurement-via-official-apis-and-snapshots.md) | Measurement via official APIs, env-var keys, snapshot monitor | accepted |
 | [0006](0006-quality-gates-and-tdd.md) | Quality gates, TDD and CI | accepted |
+| [0007](0007-icp-market-and-content-strategy-layer.md) | ICP, market and content-strategy layer | accepted |

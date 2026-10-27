@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: icp-two-market-strategy
+expected_outcome: |
+  An ICP sheet with one row per segment (roles, size, industry, market, language, engines, prompts,
+  confidence) backed by evidence quotes from the site and UNKNOWN where the site gives nothing; a
+  market section naming the engine mix and review platforms for DACH and the US; a language finding
+  about the JavaScript language swap; strategy.md and calendar.csv with briefs that state information
+  gain, gates and prompts, under a velocity cap; no invented personas or facts.

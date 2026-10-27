@@ -17,6 +17,8 @@ Point it at a URL, a local repo or a GitHub repo. It produces an access matrix, 
 9. **Feed shopping agents clean product data.** Merchant Center feeds, Product and Offer schema that match the page, live price and stock, and the agentic commerce protocols (OpenAI ACP, Google UCP) decide whether a product makes the AI shortlist.
 10. **Measure with themed prompt sets, repeatedly, per engine.** Engines disagree with each other most of the time and a single prompt is noise. Sample themed prompts weekly with several runs, use Search Console's generative-AI report, Bing's AI Performance report and GA4's AI Assistant channel, and expect AI referrals to be undercounted.
 
+11. **Know who you are writing for, and where.** AI discovery is persona-shaped and market-specific: half of B2B software buyers start in a chatbot, engines run most non-English sub-searches in English and ignore hreflang, and the engine mix differs by country (Naver in Korea, Baidu and DeepSeek in China, Le Chat in France). The skill derives ideal customer profiles and target markets from the site with evidence, then turns them into briefs, a capped calendar and per-segment prompt sets.
+
 ## What does not work
 
 - `llms.txt`: Google says it does not use it and crawler logs show almost nobody fetches it.
@@ -30,11 +32,13 @@ Point it at a URL, a local repo or a GitHub repo. It produces an access matrix, 
 
 1. **Intake**: target (URL, local repo or GitHub repo URL), site type, target engines, YMYL or not, and the mode: audit (report only), propose (report plus diffs and a change queue), apply (edits on a branch, never published).
 2. **Access audit**: robots rules per bot, status codes per user agent, raw-HTML word counts. This runs first because a blocked search bot or a client-rendered shell zeroes out everything else.
-3. **Page audit**: answer-first structure, vague openers, visible author and dates, claims that need sources, schema values missing from the visible text, information gain, suitability content.
-4. **Measurement baseline**: a themed prompt set sampled across engines with repeated runs, or an explicit UNKNOWN plus the prompt set for a human to run.
-5. **Prioritised plan**: each finding tagged with a strategy ID, a priority score, an autonomy level and the human gate it needs.
-6. **Execution within the mode**: diffs that apply with `patch -p1`, a change queue with claim ledgers, nothing merged, nothing published.
-7. **Report** in a fixed structure, then **monitor** on a schedule.
+3. **ICP and market discovery**: roles, industries, size band, pricing model, review platforms and proof quotes with evidence; languages, hreflang, JavaScript language swaps, currencies and geographies mapped to a market table. One ICP row per segment, UNKNOWN where the site gives nothing.
+4. **Page audit**: answer-first structure, vague openers, visible author and dates, claims that need sources, schema values missing from the visible text, information gain, suitability content.
+5. **Measurement baseline**: a themed prompt set sampled across engines with repeated runs, or an explicit UNKNOWN plus the prompt set for a human to run.
+6. **Prioritised plan**: each finding tagged with a strategy ID, a priority score, an autonomy level and the human gate it needs.
+7. **Content strategy**: briefs with required information gain and gates, a calendar under the velocity cap, and the prompts that measure each brief (`strategy.md`, `calendar.csv`).
+8. **Execution within the mode**: diffs that apply with `patch -p1`, a change queue with claim ledgers, nothing merged, nothing published.
+9. **Report** in a fixed structure, then **monitor** on a schedule.
 
 The full reasoning is in [SKILL.md](SKILL.md); the agent-facing rules are in [AGENTS.md](AGENTS.md).
 
@@ -123,7 +127,7 @@ Codex reads `AGENTS.md` from the working directory automatically, so you can als
 - `SKILL.md`: the workflow Claude follows, with the reasoning.
 - `AGENTS.md`: the same guideline written for any coding agent.
 - `commands/monitor.md`: the `/monitor` slash command for Claude Code.
-- `scripts/`: `audit_all.py`, `crawl_audit.py`, `page_lint.py`, `schema_check.py`, `prompt_sampler.py`, `report.py`, `monitor.py`.
+- `scripts/`: `audit_all.py`, `crawl_audit.py`, `page_lint.py`, `schema_check.py`, `icp_signals.py`, `market_detect.py`, `strategy_plan.py`, `prompt_sampler.py`, `report.py`, `monitor.py`.
 - `references/`: strategies, validation checks, measurement, tools, sources (generated from `playbook/`).
 - `playbook/`: data modules and `build_xlsx.py` that regenerate the full evidence workbook.
 - `evals/`: test cases in the `claude plugin eval` layout.
