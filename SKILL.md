@@ -33,7 +33,7 @@ Run:
 python scripts/audit_all.py https://example.com --paths / /pricing /blog/some-post --outdir audit/
 ```
 
-Pick 5-10 representative paths: home, a product or category page, a key article, pricing, docs page. The script writes `audit/audit.json` (robots matrix per bot, status by user agent, raw-HTML word counts), `audit/lint.json`, `audit/schema.json` and `audit/report.md`.
+Pick 5-10 representative paths: home, a product or category page, a key article, pricing, docs page. The script writes `audit/audit.json` (robots matrix per bot, status by user agent, raw-HTML word counts), `audit/lint.json`, `audit/schema.json`, `audit/report.md` and `audit/plan.html` (a self-contained review page; see step 6b).
 
 Interpret with `references/strategies.md` ST01. The two failures that silently zero out AI visibility are: a search/retrieval bot (OAI-SearchBot, Claude-SearchBot, PerplexityBot, the `-User` fetchers) blocked in robots.txt or at the CDN, and main content that only exists after JavaScript runs, because OpenAI, Anthropic and Perplexity crawlers do not execute JavaScript. Training bots (GPTBot, ClaudeBot, Google-Extended, CCBot) are a separate policy decision; blocking them does not affect citations, and never recommend allowing GPTBot as a fix for ChatGPT visibility.
 
@@ -110,9 +110,19 @@ Write `report.md` (the script's version, extended) using this structure:
 ## Anti-patterns avoided (what was deliberately not done and why)
 ```
 
+### 6b. Hand the owner a reviewable plan (plan.html)
+
+After the report and, if produced, the strategy, regenerate the review page:
+
+```bash
+python scripts/html_plan.py --outdir audit/ --strategy strategy/
+```
+
+`plan.html` is one static file with no external resources: the prioritised plan as a table with a decision dropdown (pending, approve, defer, reject) and a note per item, the content strategy and calendar, and the full report. The owner opens it in any browser (`open audit/plan.html`), marks each item, clicks "Copy decisions" and pastes the resulting markdown back to you. Treat that pasted block as the authorisation for step 5: apply approved items within the mode, leave deferred ones in the change queue, drop rejected ones and record why in the report. Decisions are stored only in the owner's browser; never assume an item is approved until the pasted block says so. Tell the owner the file path and that nothing in it is sent anywhere. Do not substitute a hosted artifact or a chat-only summary for this file; owners using Codex or CI have no artifact viewer.
+
 ### 7. Monitor on a schedule
 
-When the user wants ongoing review, create `seo-geo.config.json` in their project from `seo-geo.config.example.json` and run `scripts/monitor.py --config seo-geo.config.json --state .seo-geo`. It snapshots each run and diffs it against the previous one (newly blocked search bots, status changes, client-rendered shells, theme-level visibility drops). In Claude Code the same flow is the `/monitor` command in `commands/monitor.md`; `/loop 1w /monitor` makes it recurring. The monitor is read-only; any fix goes back through steps 4 and 5.
+When the user wants ongoing review, create `seo-geo.config.json` in their project from `seo-geo.config.example.json` and run `scripts/monitor.py --config seo-geo.config.json --state .seo-geo`. It snapshots each run and diffs it against the previous one (newly blocked search bots, status changes, client-rendered shells, theme-level visibility drops), writing `monitor-report.md` and a browser-ready `monitor-report.html`. In Claude Code the same flow is the `/monitor` command in `commands/monitor.md`; `/loop 1w /monitor` makes it recurring. The monitor is read-only; any fix goes back through steps 4 and 5.
 
 ## Things this skill refuses to claim
 

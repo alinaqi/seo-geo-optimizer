@@ -3,4 +3,5 @@ name: audit-url-only
 expected_outcome: |
   A report.md with an access matrix (search bots vs training bots on sampled paths),
   page-level findings, an AI visibility baseline or an explicit UNKNOWN plus prompt set,
-  and a prioritised plan tagged with strategy IDs and human gates. No site changes.
+  and a prioritised plan tagged with strategy IDs and human gates, plus a self-contained
+  plan.html review page the owner can open in any browser. No site changes.

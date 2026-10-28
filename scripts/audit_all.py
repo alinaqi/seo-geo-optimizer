@@ -6,7 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python
 import argparse
 import json
 from urllib.parse import urljoin
-from scripts import crawl_audit as ca, page_lint as pl, schema_check as sc, report as rp
+from scripts import crawl_audit as ca, page_lint as pl, schema_check as sc, report as rp, html_plan as hp
 
 
 def run(base, paths, outdir):
@@ -19,6 +19,7 @@ def run(base, paths, outdir):
     for name, data in {"audit": audit, "lint": lint, "schema": schema}.items():
         (out / f"{name}.json").write_text(json.dumps(data, indent=2))
     (out / "report.md").write_text(rp.render(audit, lint, schema, None))
+    hp.write(out)
     return out / "report.md"
 
 

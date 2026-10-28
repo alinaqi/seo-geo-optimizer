@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # allow `python
 import argparse
 import json
 from datetime import datetime, timezone
-from scripts import crawl_audit as ca, prompt_sampler as ps
+from scripts import crawl_audit as ca, prompt_sampler as ps, html_plan as hp
 
 REQUIRED = ("url", "paths", "brand", "category", "domain")
 DROP = 0.2  # theme-level rate drop that counts as a regression
@@ -98,6 +98,7 @@ def run(config_path, state):
     changes += diff_baseline(_load(prev_dir / "baseline.json" if prev_dir else None), baseline)
     report = out / "monitor-report.md"
     report.write_text(_render(prev_dir, changes, audit))
+    (out / "monitor-report.html").write_text(hp.render_markdown_page(f"Monitor: {cfg['url']}", report.read_text()))
     return report
 
 

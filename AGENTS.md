@@ -53,6 +53,14 @@ Non-negotiable rules:
 - Do not recommend llms.txt, schema markup, AI-specific rewriting or self-ranked listicles as ways to earn AI citations.
 - A finding you could not verify stays UNKNOWN, never PASS or FAIL.
 
+## 4b. Give the owner plan.html to review
+
+```bash
+<skill-dir>/.venv/bin/python <skill-dir>/scripts/html_plan.py --outdir audit/ --strategy strategy/
+```
+
+Run this after you finish `report.md` (and `strategy/` when it exists). It writes `audit/plan.html`, a single static page that works offline in any browser: the prioritised plan with a decision dropdown and a note per item, the content calendar, and the full report. Tell the owner to open it, mark each item, click "Copy decisions" and paste the result back to you. The pasted block is the only authorisation to apply items; until it arrives every item is pending. Do not replace this file with a chat summary or a hosted page.
+
 ## 5. Monitor
 
 Create `seo-geo.config.json` in the target project (copy `seo-geo.config.example.json`) and run:

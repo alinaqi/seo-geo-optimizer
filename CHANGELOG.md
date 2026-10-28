@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format follows Keep
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-28
+
+### Added
+- `scripts/html_plan.py` and `scripts/html_sections.py`: a self-contained `plan.html` review page (plan table with per-item decision and note, copy-decisions button, content strategy and calendar, full report) written by `audit_all.py` and on demand; `monitor.py` also writes `monitor-report.html`. ADR 0008.
+- SKILL.md step 6b and AGENTS.md step 4b: the owner reviews in a browser and pastes decisions back; no hosted artifact needed, so Codex and CI users get the same flow.
+
+### Changed
+- `markdown` added to requirements.
+
 ## [0.3.0] - 2026-10-27
 
 ### Added

@@ -38,7 +38,7 @@ Point it at a URL, a local repo or a GitHub repo. It produces an access matrix, 
 6. **Prioritised plan**: each finding tagged with a strategy ID, a priority score, an autonomy level and the human gate it needs.
 7. **Content strategy**: briefs with required information gain and gates, a calendar under the velocity cap, and the prompts that measure each brief (`strategy.md`, `calendar.csv`).
 8. **Execution within the mode**: diffs that apply with `patch -p1`, a change queue with claim ledgers, nothing merged, nothing published.
-9. **Report** in a fixed structure, then **monitor** on a schedule.
+9. **Report** in a fixed structure, plus a **review page** (`plan.html`) the owner opens in a browser to approve, defer or reject each item and paste the decisions back. Then **monitor** on a schedule.
 
 The full reasoning is in [SKILL.md](SKILL.md); the agent-facing rules are in [AGENTS.md](AGENTS.md).
 
@@ -74,7 +74,16 @@ An audit produces `audit/report.md` plus the JSON behind it. Trimmed example fro
 - every proposed fact is a [VERIFY] placeholder until a named reviewer fills the claim ledger
 ```
 
-In propose mode you also get `change-queue.md` and `diffs/*.diff`. The monitor produces `.seo-geo/runs/<timestamp>/monitor-report.md`:
+Next to it sits `audit/plan.html`, a single file that opens in any browser with no server, account or hosted artifact, so it works the same for Codex, Claude Code and CI users. It shows the same plan as a table with a decision dropdown and a note on every row, the content strategy and calendar when they exist, and the full report underneath. The owner marks each row, clicks "Copy decisions" and pastes the generated markdown back to the agent, which then applies only the approved items:
+
+```markdown
+## Review decisions (2026-10-28)
+- 1 ST01 AI-crawler access and server-rendered HTML: **approve** - infra ticket opened (/deloitte/: 13 words in raw HTML)
+- 2 ST10 Real authors, reviewers, visible dates: **defer** - waiting on bios (/: no visible real author)
+- 3 ST03 Answer-first passage architecture: **reject** - page is being retired (/studio/: answer-first score 0.29)
+```
+
+In propose mode you also get `change-queue.md` and `diffs/*.diff`. The monitor produces `.seo-geo/runs/<timestamp>/monitor-report.md` (and the same as `monitor-report.html`):
 
 ```markdown
 # Monitor report: https://www.example.com
@@ -127,7 +136,7 @@ Codex reads `AGENTS.md` from the working directory automatically, so you can als
 - `SKILL.md`: the workflow Claude follows, with the reasoning.
 - `AGENTS.md`: the same guideline written for any coding agent.
 - `commands/monitor.md`: the `/monitor` slash command for Claude Code.
-- `scripts/`: `audit_all.py`, `crawl_audit.py`, `page_lint.py`, `schema_check.py`, `icp_signals.py`, `market_detect.py`, `strategy_plan.py`, `prompt_sampler.py`, `report.py`, `monitor.py`.
+- `scripts/`: `audit_all.py`, `crawl_audit.py`, `page_lint.py`, `schema_check.py`, `icp_signals.py`, `market_detect.py`, `strategy_plan.py`, `prompt_sampler.py`, `report.py`, `html_plan.py` (review page), `monitor.py`.
 - `references/`: strategies, validation checks, measurement, tools, sources (generated from `playbook/`).
 - `playbook/`: data modules and `build_xlsx.py` that regenerate the full evidence workbook.
 - `evals/`: test cases in the `claude plugin eval` layout.
